@@ -1,5 +1,5 @@
 <mat-form-field appearance="outline" remove-margin-bottom>
-    <input matInput placeholder="Press 'Enter' to search..." [ngModel]="searchTerm"
+    <input matInput placeholder="Search by task content..." [ngModel]="searchTerm"
         (ngModelChange)="searchTerm = $event; searchTermChanged.emit(searchTerm)"
         (keyup.Enter)="searchTermChanged.emit(searchTerm)">
     <mat-icon matSuffix>search</mat-icon>
