@@ -5,8 +5,7 @@
         }">Characters used
             {{task.text.length}}/{{priorityValues.indexOf(task.priority) === 0 ? '∞' : '30'}}</mat-label>
         <textarea #input matInput [maxLength]="maxLengthByPriority[task.priority]" placeholder="Ex. It makes me feel..."
-            (keyup)="changeText.emit(task.text)"
-            [disabled]="task.state === 'completed'">{{task.text | uppercase}}</textarea>
+            (keyup)="changeText.emit(task.text)" [disabled]="task.state === 'completed'">{{task.text}}</textarea>
     </mat-form-field>
     <mat-card-actions>
         <button mat-stroked-button [matMenuTriggerFor]="prioritySelector" [disabled]="task.state === 'completed'">
