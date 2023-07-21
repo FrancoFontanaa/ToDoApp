@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+// Custom accents are used to set priority colors.
+$custom-accents: (
+  priority-low: #FFC530,
+  priority-medium: #FF9737,
+  priority-high: #FF5555
+);
+
+$primary: mat.define-palette(mat.$blue-palette, 900);
+$accent: mat.define-palette(map-merge(mat.$blue-palette, $custom-accents), 800);
+$warn: mat.define-palette((mat.$red-palette));
+
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  )
+));
+
+@include mat.all-component-themes($theme);

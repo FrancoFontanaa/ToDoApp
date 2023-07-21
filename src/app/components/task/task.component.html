@@ -1,0 +1,58 @@
+<mat-card>
+    <mat-form-field appearance="outline" remove-margin-bottom>
+        <mat-label [ngClass]="{
+            'warn': task.text.length > maxLengthByPriority[task.priority],
+        }">Characters used
+            {{task.text.length}}/{{priorityValues.indexOf(task.priority) === 0 ? '∞' : '30'}}</mat-label>
+        <textarea #input matInput [maxLength]="maxLengthByPriority[task.priority]" placeholder="Ex. It makes me feel..."
+            (keyup)="changeText.emit(task.text)"
+            [disabled]="task.state === 'completed'">{{task.text | uppercase}}</textarea>
+    </mat-form-field>
+    <mat-card-actions>
+        <button mat-stroked-button [matMenuTriggerFor]="prioritySelector" [disabled]="task.state === 'completed'">
+            <div class="align">
+                <!-- Filling is calculated based on the number of priorities, that allows us to add more priorities in the enum and the filling and color will be calculated automatically. -->
+                <app-priority-indicator
+                    [fill]="100 / priorityValues.length * (priorityValues.length - priorityValues.indexOf(task.priority))"></app-priority-indicator>
+                Priority {{task.priority}}
+            </div>
+        </button>
+        <mat-menu #prioritySelector="matMenu">
+            <button mat-menu-item *ngFor="let value of priorityValues" (click)="changePriority.emit(value)">
+                <div class="align">
+                    <app-priority-indicator
+                        [fill]="100 / priorityValues.length * (priorityValues.length - priorityValues.indexOf(value))"></app-priority-indicator>
+                    Priority {{value}}
+                </div>
+            </button>
+        </mat-menu>
+        <button mat-stroked-button [matMenuTriggerFor]="stateSelector">
+            <mat-icon>
+                {{task.state === 'pending' ? 'watch_later' : 'check_circle'}}
+            </mat-icon>
+            {{task.state === 'pending' ? 'Pending' : 'Completed'}}
+        </button>
+        <mat-menu #stateSelector="matMenu">
+            <button mat-menu-item (click)="changeState.emit('pending')">
+                <mat-icon>watch_later</mat-icon>
+                Pending
+            </button>
+            <button mat-menu-item (click)="changeState.emit('completed')">
+                <mat-icon>check_circle</mat-icon>
+                Completed
+            </button>
+        </mat-menu>
+        <div class="align">
+            <button mat-stroked-button [disabled]="task.state === 'completed'" (click)="toggleTimer()">
+                <mat-icon>
+                    {{timerRunning ? 'pause' : 'play_arrow'}}
+                </mat-icon>
+                {{(task.timeSpent | roundThirthyMinutes) + localTimeSpent | timer}}
+            </button>
+            <app-clock [size]="34" [fill]="localTimeSpent / maxLocalTimeSpent * 100"></app-clock>
+            <button mat-icon-button (click)="deleteTask.emit()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,6 @@
+<mat-form-field appearance="outline" remove-margin-bottom>
+    <input matInput placeholder="Press 'Enter' to search..." [ngModel]="searchTerm"
+        (ngModelChange)="searchTerm = $event; searchTermChanged.emit(searchTerm)"
+        (keyup.Enter)="searchTermChanged.emit(searchTerm)">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>

@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": "791e03fe87",
+      "text": "NEW TASK 1",
+      "priority": "low",
+      "state": "pending",
+      "timestamp": 1689948141485,
+      "timeSpent": 2
+    },
+    {
+      "id": "e74819ea10",
+      "text": "NEW TASK 2",
+      "priority": "medium",
+      "state": "completed",
+      "timestamp": 1689948144465,
+      "timeSpent": 0
+    },
+    {
+      "id": "159fc400c7",
+      "text": "NEW TASK 3",
+      "priority": "high",
+      "state": "pending",
+      "timestamp": 1689948177207,
+      "timeSpent": 5
+    }
+  ]
+}

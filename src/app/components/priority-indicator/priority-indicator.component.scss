@@ -1,0 +1,49 @@
+@use '../../../scss/theming';
+@use '@angular/material' as mat;
+
+$primary: map-get(theming.$theme, 'primary');
+$accent: map-get(theming.$theme, 'accent');
+$gray300: map-get(mat.$gray-palette, 300);
+$low: map-get($accent, 'priority-low');
+$medium: map-get($accent, 'priority-medium');
+$high: map-get($accent, 'priority-high');
+
+:host {
+    aspect-ratio: 3 / 2;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: var(--size);
+    
+
+    .fixed-shape {
+        position: absolute;
+        width: 200%;
+        background-color: $gray300;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) rotate(-30deg);
+    }
+
+    .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--fill);
+        bottom: 0;
+        overflow: hidden;
+        .mobile-shape {
+            position: absolute;
+            background: linear-gradient(to right, $low 0% 15%, $medium, $high 85% 100%);
+            background-size: 1000%;
+            //The background position x defines wich color is shown, and varies with the fill amount
+            background-position-x: var(--fill);
+            width: calc(var(--size) * 2);
+            height: 100%;
+            top: 50%;
+            left: calc(var(--size) / 2);
+            transform: translateX(-50%) rotate(-30deg);
+        }
+    }
+}

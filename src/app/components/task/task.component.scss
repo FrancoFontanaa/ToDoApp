@@ -1,0 +1,50 @@
+@use '../../../scss/theming';
+
+$accent: map-get(theming.$theme, 'accent');
+$low: map-get($accent, 'priority-low');
+$medium: map-get($accent, 'priority-medium');
+$high: map-get($accent, 'priority-high');
+
+mat-card {
+    position: relative;
+    display: block;
+
+    mat-form-field {
+        width: calc(100% - 16px);
+        margin: 8px;
+        margin-bottom: 0;
+
+        mat-label.warn {
+            color: $high;
+        }
+    }
+
+    mat-card-title {
+        max-width: 100%;
+        word-break: break-word;
+    }
+
+    mat-card-actions {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .priority-selector {
+        opacity: 0.5;
+    }
+}
+
+.align {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+
+@media screen and (max-width: 420px) {
+    mat-card-actions {
+        flex-direction: column;
+        button, .align {
+            width: 100%;
+        }
+    }
+}

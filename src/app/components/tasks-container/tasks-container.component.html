@@ -1,0 +1,11 @@
+<mat-expansion-panel [expanded]="expanded">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{title}} ({{tasksArray.length}})
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <p *ngIf="!tasksArray.length">There is no {{title | lowercase}}...</p>
+  <div class="tasks-container">
+    <ng-content></ng-content>
+  </div>
+</mat-expansion-panel>

@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div>To Do App</div>
+        <div class="total-time-spent">
+            <mat-icon>timer</mat-icon> {{ timeSpent | timer}}
+        </div>
+        <button class="desktop" mat-flat-button color="accent" (click)="addTask.emit()">
+            <mat-icon>add</mat-icon>
+            Add task
+        </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="mobile">
+        <button mat-flat-button color="accent" (click)="addTask.emit()">
+            <mat-icon>add</mat-icon>
+            Add task
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>

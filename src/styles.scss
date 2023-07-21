@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'scss/theming';
+
+* { 
+  margin: 0 ; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+mat-form-field[remove-margin-bottom] {
+  >div:nth-child(2) {
+      display: none;
+  }
+}

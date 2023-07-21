@@ -1,0 +1,12 @@
+mat-expansion-panel {
+    max-width: 1000px;
+    margin: auto;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+
+    .tasks-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+}
